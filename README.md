@@ -21,7 +21,10 @@ Security of you personal information it key. Random Password Generators produce 
 
 See Wikipedia: <a href="https://en.wikipedia.org/wiki/Password_strength" target="_blank">Password strength</a> for full description and explaination in the benifits .
 
-![password generator](./Assets/Images/03-javascript-homework.png)
+![password generator](./Assets/Images/03-javascript.png)
+
+Below removes the prompts in favour of number and checkbox feilds
+![password generator advanced](./Assets/Images/03-javascript-advanced.png)
 
 ## Technologies Utilized
 Primary technologies:

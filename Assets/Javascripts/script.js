@@ -15,14 +15,28 @@ generateBtn.addEventListener("click", writePassword);
 
 //password generation code
 function generatePassword() {
+  // build up of resulting password
+  var passwordResult = "";
 
   // declaring the variables required.
   var lowerCase = true;
   var upperCase = true;
   var specialCharacters = true;
   var numbers = true;
-  // build up of resulting password
-  var passwordResult = "";
+  var passwordLength = getInteger(); // call a function to get and valid the input
+  // if password length = -1 then cancel was click, return... abort.
+  if (passwordLength === -1) {
+    alert("Cancel clicked!");
+    return "";
+  }
+
+  // function to get charactor selectors
+  var characterSelectors = getCharacterSelectors();
+  // return if the users fails to select at least one after 5 attempts.
+  if (characterSelectors.cancelled) {
+    alert("Please select at least one charactor selector.");
+    return "";
+  }
 
   // declaring the list of elements to use.
   // list of characters, will control upper and lower with lowerCase and upperCase variables
@@ -30,114 +44,63 @@ function generatePassword() {
   // list for special characters !"#$%&'()*+,-./:;<=>?@[\]^_`{|}~
   var specialCharactersCaseList = "\u0020!\u0022#$%&'()*+,-./:;<=>?@[\u005C\u005D^_`{|}~";
   // list of numbers characters
-  var numberList = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]; // could use return +String.fromCharCode(Math.floor(Math.random() * 10) + 48);
+  var numberList = "0123456789"; // could use return +String.fromCharCode(Math.floor(Math.random() * 10) + 48);
 
   // confirm list fill correctly
   console.log("characterList: " + characterList);
   console.log("specialCharactersCaseList: " + specialCharactersCaseList);
   console.log("numberList: " + numberList);
 
-  // call a function to get and valid the input
-  var passwordLength = getInteger();
-  if (passwordLength === -1) {
-    // cancel was click so abort
-    alert("Cancel clicked!");
-    return "";
+  // console log all variables gathered
+  console.log("passwordLength: " + passwordLength);
+  console.log("lowerCase: " + lowerCase);
+  console.log("upperCase: " + upperCase);
+  console.log("specialCharacters: " + specialCharacters);
+  console.log("numbers: " + numbers);
+
+  // create a list to randomly select characters
+  const characterSelections = [];
+  if (characterSelectors.lowerCase) {
+    characterSelections.push("l");
   }
-  else {
-    // valid integer was entered, continue
-    // using a while loop to ensure at least one character type is selected.
-    // Looping no more than 5 times, exist a potential endless loop.
-    var loopCounter = 1;
-    var atLeastOneSelected = false;
-    while (!atLeastOneSelected) {
-      lowerCase = confirm("Use lowercase characters? i.e. abcd... z");
-      upperCase = confirm("Use UPPERCASE characters? i.e. ABCD... Z");
-      specialCharacters = confirm("Use special characters? i.e. !\u0022#$... ]");
-      numbers = confirm("Use numbers characters? i.e. 1234... 9");
+  if (characterSelectors.upperCase) {
+    characterSelections.push("u");
+  }
+  if (characterSelectors.specialCharacters) {
+    characterSelections.push("s");
+  }
+  if (characterSelectors.numbers) {
+    characterSelections.push("n");
+  }
+  //checking the user selections
+  console.log("Character Selections: " + characterSelections);
 
-      // check at least one is true, i.e. if all are false then not one can be true
-      if (!(!lowerCase && !upperCase && !specialCharacters && !numbers)) {
-        atLeastOneSelected = true;
-      }
-      else {
-        console.log("loopCounter: " + loopCounter);
-        if (loopCounter === 5) {
-          alert("5 failed attempts. Exiting Password Generation.");
-          return "";
-        }
-        else {
-          alert("You must select at least one character option.");
-        }
-      }
-      loopCounter++;
-    }
-    // console log all variables gathered
-    console.log("passwordLength: " + passwordLength);
-    console.log("lowerCase: " + lowerCase);
-    console.log("upperCase: " + upperCase);
-    console.log("specialCharacters: " + specialCharacters);
-    console.log("numbers: " + numbers);
-    console.log(".....................");
-
-    // create a list to randomly select characters
-    const characterSelections = [];
-    if (lowerCase) {
-      characterSelections.push("l");
-    }
-    if (upperCase) {
-      characterSelections.push("u");
-    }
-    if (specialCharacters) {
-      characterSelections.push("s");
-    }
-    if (numbers) {
-      characterSelections.push("n");
-    }
-    //checking the user selections
-    console.log("Character Selections: " + characterSelections);
-    // Generate. Loop the length of the password.
-
-    // to ensure there is at least 1 of each character types, I will clone the list a remove the selection and once the cloned list has zero length, repopulate the list.
-    var cloneCharacterSelections = [];
-    for (var i = 0; i < passwordLength; i++) {
-      //first time this will populate the clone list and everytime the clone list length is zero
-      if (cloneCharacterSelections.length === 0) {
-        cloneCharacterSelections = [...characterSelections];
-      }
-      // random character selection "position"
-      var position = Math.floor(Math.random() * cloneCharacterSelections.length);
-      // get the charactor at position x.
-      var characterSelector = cloneCharacterSelections[position];
-
-      // remove the selected character.
-      cloneCharacterSelections.splice(position, 1);
-      // console.log("Temp Chraracter Selections: " + cloneCharacterSelections);
-
-      if (characterSelector === "l" || characterSelector === "u") {
-        if (characterSelector === "l") {
+  //Loop the length of the password.
+  for (var i = 0; i < passwordLength; i += characterSelections.length) {
+    // loop through the character selectors
+    for (var j = 0; j < characterSelections.length; j++) {
+      var characterSelector = characterSelections[j];
+      // switch between the character selectors
+      switch (characterSelector) {
+        case ("l"):
           passwordResult += characterList[Math.floor(Math.random() * characterList.length)];
-          //  console.log("Password at position: " + i + " " + passwordResult);
-
-        }
-        else {
+          break;
+        case ("u"):
           passwordResult += characterList[Math.floor(Math.random() * characterList.length)].toUpperCase();
-          //  console.log("Password at position: " + i + " " + passwordResult);
-        }
-      }
-      else if (characterSelector === "s") {
-        passwordResult += specialCharactersCaseList[Math.floor(Math.random() * specialCharactersCaseList.length)];
-        //  console.log("Password at position: " + i + " " + passwordResult);
-      }
-      else { // must be n
-        passwordResult += numberList[Math.floor(Math.random() * numberList.length)];
-        //  console.log("Password at position: " + i + " " + passwordResult);
+          break;
+        case ("s"):
+          passwordResult += specialCharactersCaseList[Math.floor(Math.random() * specialCharactersCaseList.length)];
+          break;
+        default:// must be n
+          passwordResult += numberList[Math.floor(Math.random() * numberList.length)];
       }
     }
-
-    console.log("Password: " + passwordResult);
-    return passwordResult;
   }
+  // ensure the result is less not over
+  var finalPassword = passwordResult.slice(0, passwordLength);
+  // randomise the result to shuffle the character selectors
+  var shuffled = finalPassword.split('').sort(() => (Math.random() - 0.5)).join('');
+  return shuffled;
 }
 
 // function to get an integer from the user between 8 and 128
@@ -151,9 +114,7 @@ function getInteger() {
     passwordLength = parseInt(userInput);
 
     // console log all variables
-    console.log("userInput: " + userInput); // check user value
-    console.log("passwordLength: " + passwordLength); // check user value
-    console.log(".....................");
+    console.log("userInput: " + userInput, "passwordLength: " + passwordLength); // check user value
 
     // check if cancel was hit, i.e. null, return -1 to break the while and password creation
     if (userInput === null) {
@@ -170,4 +131,47 @@ function getInteger() {
     }
   }
   return passwordLength;
+}
+
+function getCharacterSelectors() {
+  // valid integer was entered, continue
+  // using a while loop to ensure at least one character type is selected.
+  // Looping no more than 5 times, exist a potential endless loop.
+  var characterSelectors = {
+    lowerCase: false,
+    upperCase: false,
+    specialCharacters: false,
+    numbers: false,
+    cancelled: false,
+  };
+  var loopCounter = 1;
+  var breakLoop = false;
+  // loop until a user selects one or fails after 5 attempts
+  while (!breakLoop) {
+    characterSelectors.lowerCase = confirm("Use lowercase characters? i.e. abcd... z");
+    characterSelectors.upperCase = confirm("Use UPPERCASE characters? i.e. ABCD... Z");
+    characterSelectors.specialCharacters = confirm("Use special characters? i.e. !\u0022#$... ]");
+    characterSelectors.numbers = confirm("Use numbers characters? i.e. 1234... 9");
+
+    // check at least one is true, i.e. if all are false then not one can be true
+    if (!(
+      !characterSelectors.lowerCase && 
+      !characterSelectors.upperCase && 
+      !characterSelectors.specialCharacters && 
+      !characterSelectors.numbers)) {
+      breakLoop = true;
+    }
+    else {
+      console.log("loopCounter: " + loopCounter);
+      if (loopCounter === 5) {
+        characterSelectors.cancelled = true;
+        breakLoop = true;
+      }
+      else {
+        alert("You must select at least one character option.");
+      }
+    }
+    loopCounter++;
+  }
+  return characterSelectors;
 }
