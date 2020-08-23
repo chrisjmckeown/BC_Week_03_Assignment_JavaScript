@@ -10,10 +10,10 @@ This app generates a random password based on a set of user criteria.
 
 Criteria selections by the user include: 
 * Length: between 8 and 128?
-* Include lowercase? ( e.g. abcdefgh )
-* Include UPPERCASE? ( e.g. ABCDEFGH )
-* Include numeric? ( e.g. 123456 )
-* Include special characters? ( e.g. @#$% )
+* Include lowercase? ( i.e. abcd... z )
+* Include UPPERCASE? ( i.e. ABCD... Z )
+* Include numeric? ( i.e. 0123... 9 )
+* Include special characters? ( i.e. !"#$... ] )
 
 The generated password will accomodate the user inputs to genereate and display the result in the secure password text box.
 
