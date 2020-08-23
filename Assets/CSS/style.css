@@ -135,3 +135,8 @@ button[disabled] {
     font-size: 0.8rem;
   }
 }
+
+.input{
+  display: inline-block;
+  width: 400px;
+}
