@@ -5,51 +5,72 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-  <title>Password Generator</title>
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+    integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
   <link rel="stylesheet" href="./Assets/CSS/style.css" />
+  <title>Password Generator</title>
 </head>
 
 <body>
   <div class="wrapper">
+    <!-- Semantic header -->
     <header>
       <h1>Password Generator</h1>
     </header>
-    <div class="card">
-      <div class="card-header">
-        <h2>Generate a Password</h2>
-      </div>
-      <div class="card-body">
-        <div>
-          <textarea readonly id="password" placeholder="Your Secure Password"
-            aria-label="Generated Password"></textarea>
+    <main>
+      <!-- Semantic main -->
+      <div class="card">
+        <div class="card-header">
+          <h2>Generate a Password</h2>
         </div>
-        <div>
-          <label class="input">Password length</label>
-          <input id="passwordLength" type="number" min='8' max='128' value='8' />
-        </div>
-        <div>
-          <label class="input">Include lowercase letters i.e. abcd... z</label>
-          <input id="lowerCase" type="checkbox" checked />
-        </div>
-        <div>
-          <label class="input">Include uppercase letters i.e. ABCD... Z</label>
-          <input id="upperCase" type="checkbox" checked />
-        </div>
-        <div>
-          <label class="input">Include Special Characters i.e. !\u0022#$... ]</label>
-          <input id="specialCharacters" type="checkbox" checked />
-        </div>
-        <div>
-          <label class="input">Include numbers i.e. 1234... 9</label>
-          <input id="numbers" type="checkbox" checked />
-        </div>
+        <div class="card-body">
+          <div>
+            <textarea readonly id="password" placeholder="Your Secure Password"
+              aria-label="Generated Password"></textarea>
+          </div>
+          <div>
+            <label class="input">Password length</label>
+            <input id="passwordLength" type="number" min='8' max='128' value='8' />
+          </div>
+          <div>
+            <label class="input">Include lowercase letters i.e. abcd... z</label>
+            <input id="lowerCase" type="checkbox" checked />
+          </div>
+          <div>
+            <label class="input">Include uppercase letters i.e. ABCD... Z</label>
+            <input id="upperCase" type="checkbox" checked />
+          </div>
+          <div>
+            <label class="input">Include Special Characters i.e. !\u0022#$... ]</label>
+            <input id="specialCharacters" type="checkbox" checked />
+          </div>
+          <div>
+            <label class="input">Include numbers i.e. 1234... 9</label>
+            <input id="numbers" type="checkbox" checked />
+          </div>
 
+        </div>
+        <div class="card-footer">
+          <button id="generate" class="btn">Generate Password</button>
+        </div>
+        <a href="index.html">Return to original version.</a>
       </div>
-      <div class="card-footer">
-        <button id="generate" class="btn">Generate Password</button>
+    </main>
+    <!-- Semantic footer -->
+    <footer class="footer">
+      <div class="container">
+        <!-- div for social media -->
+        <div class="copyright-social-media">
+          <span><a href="https://github.com/chrisjmckeown/New_Your_Times_Search/blob/master/LICENSE"
+              target="_blank">&#169; 2020</a> - Chris Mckeown - </span>
+          <a href="https://www.linkedin.com/in/chrisjmckeown/" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="https://twitter.com/ChrisMckeown6" target="_blank"><i class="fab fa-twitter-square"></i></a>
+          <a href="https://www.facebook.com/christopher.j.mckeown.3" target="_blank"><i
+              class="fab fa-facebook-square"></i></a>
+          <a href="https://github.com/chrisjmckeown" target="_blank"> <i class="fab fa-github-square"></i></a>
+        </div>
       </div>
-      <a href="index.html">Return to original version.</a> 
-    </div>
+    </footer>
   </div>
   <script src="./Assets/Javascripts/script_no_prompts.js"></script>
 </body>
