@@ -5,28 +5,50 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
+      integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous" />
+      <link rel="stylesheet" href="./Assets/CSS/style.css" />
   <title>Password Generator</title>
-  <link rel="stylesheet" href="./Assets/CSS/style.css" />
 </head>
 
 <body>
   <div class="wrapper">
+    <!-- Semantic header -->
     <header>
       <h1>Password Generator</h1>
     </header>
-    <div class="card">
-      <div class="card-header">
-        <h2>Generate a Password</h2>
-      </div>
-      <div class="card-body">
-        <textarea readonly id="password" placeholder="Your Secure Password" aria-label="Generated Password"></textarea>
-      </div>
-      <div class="card-footer">
-        <button id="generate" class="btn">Generate Password</button>
-      </div>
+    <!-- Semantic main -->
+    <main>
+      <div class="card">
+        <div class="card-header">
+          <h2>Generate a Password</h2>
+        </div>
+        <div class="card-body">
+          <textarea readonly id="password" placeholder="Your Secure Password"
+            aria-label="Generated Password"></textarea>
+        </div>
+        <div class="card-footer">
+          <button id="generate" class="btn">Generate Password</button>
+        </div>
 
-      <a href="no_prompts.html">See here for no prompt version.</a>
-    </div>
+        <a href="no_prompts.html">See here for no prompt version.</a>
+      </div>
+    </main>
+    <!-- Semantic footer -->
+    <footer class="footer">
+      <div class="container">
+        <!-- div for social media -->
+        <div class="copyright-social-media">
+          <span><a href="https://github.com/chrisjmckeown/New_Your_Times_Search/blob/master/LICENSE"
+              target="_blank">&#169; 2020</a> - Chris Mckeown - </span>
+          <a href="https://www.linkedin.com/in/chrisjmckeown/" target="_blank"><i class="fab fa-linkedin"></i></a>
+          <a href="https://twitter.com/ChrisMckeown6" target="_blank"><i class="fab fa-twitter-square"></i></a>
+          <a href="https://www.facebook.com/christopher.j.mckeown.3" target="_blank"><i
+              class="fab fa-facebook-square"></i></a>
+          <a href="https://github.com/chrisjmckeown" target="_blank"> <i class="fab fa-github-square"></i></a>
+        </div>
+      </div>
+    </footer>
   </div>
   <script src="./Assets/Javascripts/script.js"></script>
 </body>
