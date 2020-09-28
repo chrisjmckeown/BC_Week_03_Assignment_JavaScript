@@ -4,6 +4,7 @@
 * [Technologies Utilized](#Technologies-Utilized)
 * [Password Generator Link](#Password-Generator-Link)
 * [Contact](#Contact)
+* [License](#License)
 
 ## Description
 This app generates a random password based on a set of user criteria.
@@ -40,3 +41,7 @@ Primary technologies:
 ## Contact
 
 * Please contact me at: chris.j.mckeown@hotmail.com
+
+## License
+
+* See license here: <a href="https://github.com/chrisjmckeown/Password_Generator/blob/master/LICENSE" target="_blank">license agreement</a>
